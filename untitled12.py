@@ -212,7 +212,7 @@ blur = tf.constant([
                        tf.float32)/256.0
 
 # Sharpen
-# Sharpen 滤波器用于增强图像的细节和边缘
+# Sharpen 
 sharpen = tf.constant([
                 [ 0,-1, 0],
                 [-1, 5,-1],
@@ -226,7 +226,7 @@ sobel_x = tf.reshape(sharpen, [3, 3, 1, 1])
 sobel_y = tf.transpose(sobel_x, [1, 0, 2, 3])
 
 # Apply convolution for x and y direction
-# 移动距离
+# 
 g_x = tf.nn.conv2d(images, sobel_x, strides=[1, 1, 1, 1], padding='SAME')
 g_y = tf.nn.conv2d(images, sobel_y, strides=[1, 1, 1, 1], padding='SAME')
 # Compute norm
